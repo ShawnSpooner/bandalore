@@ -33,7 +33,8 @@
    visibility timeout in seconds."
   [^AmazonSQSClient client queue-name & {:keys [visibility]}]
   (->> (if visibility
-        (CreateQueueRequest. queue-name visibility)
+        (doto (CreateQueueRequest. queue-name)
+          (.visibility visibility))
         (CreateQueueRequest. queue-name))
     (.createQueue client)
     .getQueueUrl))

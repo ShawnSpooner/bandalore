@@ -21,7 +21,7 @@
    and optional com.amazonaws.ClientConfiguration."
   ([id secret-key]
     (create-client id secret-key (com.amazonaws.ClientConfiguration.)))
-  ([id secret-key client-config]
+  ([id secret-key ^com.amazonaws.ClientConfiguration client-config]
     (AmazonSQSClient. (com.amazonaws.auth.BasicAWSCredentials. id secret-key)
       (.withUserAgent client-config "Bandalore - SQS for Clojure"))))
 
